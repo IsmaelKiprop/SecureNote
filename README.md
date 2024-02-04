@@ -72,7 +72,7 @@ SecureNote is a secure note-taking application that prioritizes the protection o
 ## Backend
 1. **Navigate to the backend directory:**
 	```bash
-	cd secure-note-backend
+	cd backend
 
 2. **Install Django dependencies:**
 	```bash

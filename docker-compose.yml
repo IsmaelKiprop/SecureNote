@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  frontend:
+    build:
+      context: ./securenote
+    ports:
+      - "3000:3000"
+
+  backend:
+    build:
+      context: ./securenote
+    ports:
+      - "8000:8000"
+
