@@ -20,4 +20,4 @@ git commit -m "$commit_message"
 echo "Pushing changes to GitHub..."
 git push
 
-echo "Setup completed successfully!"
+echo "completed successfully!"

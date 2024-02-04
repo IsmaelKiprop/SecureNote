@@ -5,9 +5,10 @@ SecureNote is a secure note-taking application that prioritizes the protection o
 
 ## Team
 
-- **Ismael Kiprop** (Backend Developer)
-  - In charge of architecting Django API endpoints and data modeling.
-  - Ensuring the security of user data.
+- **Ismael Kiprop** (Full Stack Developer)
+  - Responsible for the entire project, including frontend and backend development.
+  - Architecting React.js user interface and Django API endpoints.
+  - Focus areas: Creating a secure and seamless user experience, data modeling, and ensuring data security.
 
 ## Technologies Used
 - **Frontend:**
