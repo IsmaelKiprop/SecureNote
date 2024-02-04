@@ -1,0 +1,12 @@
+# Node.js
+node_modules/
+
+# Compiled files
+build/
+dist/
+
+# Virtual environment
+venv/
+
+# Environment variables
+.env
