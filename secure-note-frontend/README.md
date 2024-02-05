@@ -1,70 +1,98 @@
-# Getting Started with Create React App
+# GuardianNote Project
+![image](https://github.com/IsmaelKiprop/SecureNote/assets/133222922/1a409a86-25ab-410e-af84-88e8947a622e)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+GuardianNote is a secure note-taking application that prioritizes the protection of sensitive information. This project aims to provide a robust and secure platform for individuals to store their confidential notes with confidence.
 
-## Available Scripts
+## Team
 
-In the project directory, you can run:
+- **Ismael Kiprop** (Full Stack Developer)
+  - Responsible for the entire project, including frontend and backend development.
+  - Architecting React.js user interface and Django API endpoints.
+  - Focus areas: Creating a secure and seamless user experience, data modeling, and ensuring data security.
 
-### `npm start`
+## Technologies Used
+- **Frontend:**
+  - React.js
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Backend:**
+  - Django (Django REST framework for API development)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Containerization:**
+  - Docker
 
-### `npm test`
+## Challenge Statement
+- **Problem:**
+  - Creating a secure note-taking application to protect sensitive information.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Limitations:**
+  - The project will not provide end-to-end encryption for notes but will focus on secure storage and user authentication.
 
-### `npm run build`
+- **Target Audience/Users:**
+  - Individuals who need a secure platform for storing sensitive notes.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Risks
+- **Technical Risks:**
+  - Ensuring data security and encryption might be challenging.
+  - Safeguard: Regular security audits and encryption protocols.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Non-Technical Risks:**
+  - User adoption may be affected by concerns about data security.
+  - Strategy: Transparent communication about security measures and benefits.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Infrastructure
+- **Branching and Merging:**
+  - GitHub flow for branching and merging.
 
-### `npm run eject`
+- **Deployment:**
+  - Docker containers deployed using Docker Compose for simplified setup.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Data Population:**
+  - Initial data population using Django database migrations.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Testing:**
+  - Jest and React Testing Library for frontend testing.
+  - Django TestCase for backend testing.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## How to Run
+1. **Clone the repository:**
+   ```bash
+   git clone <https://github.com/IsmaelKiprop/SecureNote.git>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. **Navigate to the frontend directory:**
+	```bash
+	cd secure-note-frontend
 
-## Learn More
+3. **Install dependencies:**
+	```bash
+	npm install
+4. **Install dependencies:**
+	```bash
+	npm start
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Backend
+1. **Navigate to the backend directory:**
+	```bash
+	cd backend
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. **Install Django dependencies:**
+	```bash
+	pip install -r requirements.txt
 
-### Code Splitting
+3. **Run Django migrations:**
+	```bash
+	python manage.py migrate
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+4. **Start the Django server:**
+	```bash
+	python manage.py runserver
 
-### Analyzing the Bundle Size
+- Now, your SecureNote application should be running. Access the frontend at http://localhost:3000 and the Django backend at http://localhost:8000.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Contributing
 
-### Making a Progressive Web App
+Feel free to contribute to the project by opening issues, suggesting improvements, or submitting pull requests.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## License
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the [MIT License](LICENSE).
