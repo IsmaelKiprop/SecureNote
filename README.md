@@ -1,4 +1,5 @@
 # GuardianNote Project
+![image](https://github.com/IsmaelKiprop/SecureNote/assets/133222922/15eda2ad-0c99-430b-8aae-dcf111185e33)
 
 ## Overview
 GuardianNote is a secure note-taking application that prioritizes the protection of sensitive information. This project aims to provide a robust and secure platform for individuals to store their confidential notes with confidence.
