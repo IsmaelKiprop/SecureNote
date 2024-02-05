@@ -1,7 +1,7 @@
-# SecureNote Project
+# GuardianNote Project
 
 ## Overview
-SecureNote is a secure note-taking application that prioritizes the protection of sensitive information. This project aims to provide a robust and secure platform for individuals to store their confidential notes with confidence.
+GuardianNote is a secure note-taking application that prioritizes the protection of sensitive information. This project aims to provide a robust and secure platform for individuals to store their confidential notes with confidence.
 
 ## Team
 
