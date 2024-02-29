@@ -13,7 +13,6 @@ from rest_framework import status
 
 @api_view(['GET'])
 def getRoutes(request):
-
     routes = [
         {
             'Endpoint': '/notes/',
@@ -48,55 +47,39 @@ def getRoutes(request):
     ]
     return Response(routes)
 
-# ... (previous imports remain unchanged)
-
 @api_view(['GET', 'POST'])
 def getNotes(request):
-
     if request.method == 'GET':
         return getNotesList(request)
-
     if request.method == 'POST':
         return createNote(request)
 
-
 @api_view(['GET', 'PUT', 'DELETE'])
 def getNote(request, pk):
-
     if request.method == 'GET':
         return getNoteDetail(request, pk)
-
     if request.method == 'PUT':
         return updateNote(request, pk)
-
     if request.method == 'DELETE':
         return deleteNote(request, pk)
-
 
 @api_view(['POST'])
 def createNote(request):
     data = request.data
-
     if 'body' not in data:
         return Response({'detail': 'Missing "body" in request data'}, status=status.HTTP_400_BAD_REQUEST)
-
     note = Note.objects.create(body=data['body'])
-    serializer = NoteSerializer(note, many=False)
+    serializer = NoteSerializer(note)
     return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-
 
 @api_view(['PUT'])
 def updateNote(request, pk):
     data = request.data
     note = Note.objects.get(id=pk)
     serializer = NoteSerializer(instance=note, data=data)
-
     if serializer.is_valid():
         serializer.save()
-
     return Response(serializer.data)
-
 
 @api_view(['DELETE'])
 def deleteNote(request, pk):
