@@ -8,6 +8,9 @@ from .serializers import NoteSerializer
 from api import serializers
 from .utils import updateNote, getNoteDetail, deleteNote, getNotesList, createNote
 from rest_framework import status
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
+from rest_framework.authtoken.models import Token
 # Create your views here.
 
 
@@ -46,6 +49,30 @@ def getRoutes(request):
         },
     ]
     return Response(routes)
+
+@api_view(['POST'])
+def signup(request):
+    username = request.data.get('username')
+    password = request.data.get('password')
+    if not username or not password:
+        return Response({'error': 'Please provide both username and password'}, status=status.HTTP_400_BAD_REQUEST)
+    if User.objects.filter(username=username).exists():
+        return Response({'error': 'Username is already taken'}, status=status.HTTP_400_BAD_REQUEST)
+    user = User.objects.create_user(username=username, password=password)
+    token, _ = Token.objects.get_or_create(user=user)
+    return Response({'token': token.key}, status=status.HTTP_201_CREATED)
+
+@api_view(['POST'])
+def login(request):
+    username = request.data.get('username')
+    password = request.data.get('password')
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        token, _ = Token.objects.get_or_create(user=user)
+        return Response({'token': token.key})
+    else:
+        return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
 @api_view(['GET', 'POST'])
 def getNotes(request):
