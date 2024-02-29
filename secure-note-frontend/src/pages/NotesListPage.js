@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ListItem from '../components/ListItem'
-import AddButton from '../components/AddButton'
+import ListItem from '../components/ListItem';
+import AddButton from '../components/AddButton';
 
 const NotesListPage = () => {
   const [notes, setNotes] = useState([]);
@@ -28,9 +28,10 @@ const NotesListPage = () => {
       <h2>Notes List</h2>
       <ul>
         {notes.map(note => (
-          <li key={note.id}>{note.title}</li>
+          <ListItem key={note.id} note={note} />
         ))}
       </ul>
+      <AddButton />
     </div>
   );
 };
