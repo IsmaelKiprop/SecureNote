@@ -7,6 +7,7 @@ from .models import Note
 from .serializers import NoteSerializer
 from api import serializers
 from .utils import updateNote, getNoteDetail, deleteNote, getNotesList, createNote
+from rest_framework import status
 # Create your views here.
 
 
