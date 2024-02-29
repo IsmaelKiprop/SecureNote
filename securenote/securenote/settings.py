@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "api.apps.ApiConfig",
     'rest_framework',
-    "corsheaders",
+    'rest_framework.authtoken'
+
+
 ]
 
 MIDDLEWARE = [
@@ -130,3 +132,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]
+
+# Add 'TokenAuthentication' to DEFAULT_AUTHENTICATION_CLASSES
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        # other authentication classes
+    ],
+    # other settings
+}
