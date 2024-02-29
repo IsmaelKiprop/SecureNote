@@ -1,11 +1,17 @@
-import React from 'react'
+import React from 'react';
 
 const Header = () => {
-  return (
-    <div>
-      <hi></hi>
-    </div>
-  )
-}
+  const handleLogout = () => {
+    localStorage.removeItem('token'); // Remove token from local storage
+    // Additional logout logic if needed
+  };
 
-export default Header
+  return (
+    <div className="header">
+      <h1>Secure Notes</h1>
+      <button onClick={handleLogout}>Logout</button>
+    </div>
+  );
+};
+
+export default Header;
