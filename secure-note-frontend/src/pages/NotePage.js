@@ -1,10 +1,11 @@
+// NotePage.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg';
 import { useHistory, useParams } from 'react-router-dom';
 
 const NotePage = () => {
-  const { id } = useParams();
+  const { pk } = useParams();
   const [note, setNote] = useState(null);
   const history = useHistory();
 
@@ -14,7 +15,7 @@ const NotePage = () => {
 
   const fetchNote = async () => {
     try {
-      const response = await axios.get(`/api/notes/${id}/`, {
+      const response = await axios.get(`/api/notes/${pk}/`, {
         headers: {
           Authorization: `Token ${localStorage.getItem('token')}`
         }
@@ -27,12 +28,12 @@ const NotePage = () => {
 
   const createNote = async () => {
     try {
-      await axios.post(`/api/notes/`, note, {
+      await axios.post(`/api/notes/create`, note, {
         headers: {
           Authorization: `Token ${localStorage.getItem('token')}`
         }
       });
-      history.push('/');
+      history.push('/notes');
     } catch (error) {
       console.error('Error creating note:', error);
     }
@@ -40,7 +41,7 @@ const NotePage = () => {
 
   const updateNote = async () => {
     try {
-      await axios.put(`/api/notes/${id}/`, note, {
+      await axios.put(`/api/notes/${pk}/update/`, note, {
         headers: {
           Authorization: `Token ${localStorage.getItem('token')}`
         }
@@ -52,12 +53,12 @@ const NotePage = () => {
 
   const deleteNote = async () => {
     try {
-      await axios.delete(`/api/notes/${id}/`, {
+      await axios.delete(`/api/notes/${pk}/delete/`, {
         headers: {
           Authorization: `Token ${localStorage.getItem('token')}`
         }
       });
-      history.push('/');
+      history.push('/notes');
     } catch (error) {
       console.error('Error deleting note:', error);
     }
@@ -65,9 +66,9 @@ const NotePage = () => {
 
   const handleSubmit = () => {
     if (!note) return;
-    if (id === 'new' && note.body) {
+    if (!pk && note.body) {
       createNote();
-    } else if (id !== 'new' && note.body === '') {
+    } else if (pk && !note.body) {
       deleteNote();
     } else {
       updateNote();
@@ -84,7 +85,7 @@ const NotePage = () => {
         <h3>
           <ArrowLeft onClick={handleSubmit} />
         </h3>
-        {id !== 'new' ? (
+        {pk ? (
           <button onClick={deleteNote}>Delete</button>
         ) : (
           <button onClick={handleSubmit}>Done</button>
