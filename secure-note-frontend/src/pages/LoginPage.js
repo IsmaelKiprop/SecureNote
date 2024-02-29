@@ -7,7 +7,7 @@ const LoginPage = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://your-django-backend/login/', {
+      const response = await axios.post('/api/login/', {
         username,
         password
       });
