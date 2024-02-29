@@ -3,21 +3,19 @@ import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg'
 import { Link } from 'react-router-dom'
 
 const NotePage = ({ match, history }) => {
-
-    let noteId = match.params.id
-    let [note, setNote] = useState(null)
+    let noteId = match.params.id;
+    let [note, setNote] = useState(null);
 
     useEffect(() => {
-        getNote()
-    }, [noteId])
-
+        getNote();
+    }, [noteId]);
 
     let getNote = async () => {
-        if (noteId === 'new') return
+        if (noteId === 'new') return;
 
-        let response = await fetch(`/api/notes/${noteId}/`)
-        let data = await response.json()
-        setNote(data)
+        let response = await fetch(`/api/notes/${noteId}/`);
+        let data = await response.json();
+        setNote(data);
     }
 
     let createNote = async () => {
@@ -27,9 +25,8 @@ const NotePage = ({ match, history }) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(note)
-        })
+        });
     }
-
 
     let updateNote = async () => {
         fetch(`/api/notes/${noteId}/`, {
@@ -38,39 +35,37 @@ const NotePage = ({ match, history }) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(note)
-        })
+        });
     }
-
 
     let deleteNote = async () => {
         fetch(`/api/notes/${noteId}/`, {
             method: 'DELETE',
-            'headers': {
+            headers: {
                 'Content-Type': 'application/json'
             }
-        })
-        history.push('/')
+        });
+        history.push('/');
     }
 
     let handleSubmit = () => {
-        console.log('NOTE:', note)
-        if (noteId !== 'new' && note.body == '') {
-            deleteNote()
+        console.log('NOTE:', note);
+        if (noteId !== 'new' && note.body === '') {
+            deleteNote();
         } else if (noteId !== 'new') {
-            updateNote()
-        } else if (noteId === 'new' && note.body !== null) {
-            createNote()
+            updateNote();
+        } else if (noteId === 'new' && note.body !== '') {
+            createNote();
         }
-        history.push('/')
+        history.push('/');
     }
 
     let handleChange = (value) => {
-        setNote(note => ({ ...note, 'body': value }))
-        console.log('Handle Change:', note)
+        setNote(prevNote => ({ ...prevNote, 'body': value }));
     }
 
     return (
-        <div className="note" >
+        <div className="note">
             <div className="note-header">
                 <h3>
                     <ArrowLeft onClick={handleSubmit} />
@@ -80,11 +75,10 @@ const NotePage = ({ match, history }) => {
                 ) : (
                     <button onClick={handleSubmit}>Done</button>
                 )}
-
             </div>
-            <textarea onChange={(e) => { handleChange(e.target.value) }} value={note?.body}></textarea>
+            <textarea onChange={(e) => handleChange(e.target.value)} value={note?.body}></textarea>
         </div>
     )
 }
 
-export default NotePage
+export default NotePage;
