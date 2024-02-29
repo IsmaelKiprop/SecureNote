@@ -1,7 +1,7 @@
 from django.http import response
 from django.shortcuts import render
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.serializers import Serializer
 from .models import Note
 from .serializers import NoteSerializer
@@ -11,8 +11,9 @@ from rest_framework import status
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from rest_framework.authtoken.models import Token
-# Create your views here.
+from rest_framework.permissions import IsAuthenticated
 
+# Create your views here.
 
 @api_view(['GET'])
 def getRoutes(request):
@@ -75,6 +76,7 @@ def login(request):
         return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
 @api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])  # Add permission class for authentication
 def getNotes(request):
     if request.method == 'GET':
         return getNotesList(request)
@@ -82,6 +84,7 @@ def getNotes(request):
         return createNote(request)
 
 @api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])  # Add permission class for authentication
 def getNote(request, pk):
     if request.method == 'GET':
         return getNoteDetail(request, pk)
@@ -91,6 +94,7 @@ def getNote(request, pk):
         return deleteNote(request, pk)
 
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])  # Add permission class for authentication
 def createNote(request):
     data = request.data
     if 'body' not in data:
@@ -100,6 +104,7 @@ def createNote(request):
     return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 @api_view(['PUT'])
+@permission_classes([IsAuthenticated])  # Add permission class for authentication
 def updateNote(request, pk):
     data = request.data
     note = Note.objects.get(id=pk)
@@ -109,6 +114,7 @@ def updateNote(request, pk):
     return Response(serializer.data)
 
 @api_view(['DELETE'])
+@permission_classes([IsAuthenticated])  # Add permission class for authentication
 def deleteNote(request, pk):
     note = Note.objects.get(id=pk)
     note.delete()
