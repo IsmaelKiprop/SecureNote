@@ -12,6 +12,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
+from django.contrib.auth import login as auth_login
+
 
 # Create your views here.
 
@@ -69,7 +71,7 @@ def user_login(request):
     password = request.data.get('password')
     user = authenticate(request, username=username, password=password)
     if user is not None:
-        login(request, user)  # Changed to `user_login` to avoid conflict
+        auth_login(request, user)  # Use auth_login instead of login to avoid conflict
         token, _ = Token.objects.get_or_create(user=user)
         return Response({'token': token.key})
     else:
