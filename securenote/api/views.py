@@ -64,12 +64,12 @@ def signup(request):
     return Response({'token': token.key}, status=status.HTTP_201_CREATED)
 
 @api_view(['POST'])
-def login(request):
+def user_login(request):
     username = request.data.get('username')
     password = request.data.get('password')
     user = authenticate(request, username=username, password=password)
     if user is not None:
-        login(request, user)
+        login(request, user)  # Changed to `user_login` to avoid conflict
         token, _ = Token.objects.get_or_create(user=user)
         return Response({'token': token.key})
     else:
