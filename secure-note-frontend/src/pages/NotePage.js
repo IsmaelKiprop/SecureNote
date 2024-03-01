@@ -1,4 +1,3 @@
-// NotePage.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg';
@@ -11,7 +10,7 @@ const NotePage = () => {
 
   useEffect(() => {
     fetchNote();
-  }, []);
+  }, [fetchNote]); // Include fetchNote in the dependency array
 
   const fetchNote = async () => {
     try {
@@ -79,16 +78,28 @@ const NotePage = () => {
     setNote(prevNote => ({ ...prevNote, 'body': value }));
   };
 
+  const handleArrowLeftClick = () => {
+    handleSubmit();
+  };
+
+  const handleDeleteButtonClick = () => {
+    deleteNote();
+  };
+
+  const handleDoneButtonClick = () => {
+    handleSubmit();
+  };
+
   return (
     <div className="note">
       <div className="note-header">
         <h3>
-          <ArrowLeft onClick={handleSubmit} />
+          <ArrowLeft onClick={handleArrowLeftClick} />
         </h3>
         {pk ? (
-          <button onClick={deleteNote}>Delete</button>
+          <button onClick={handleDeleteButtonClick}>Delete</button>
         ) : (
-          <button onClick={handleSubmit}>Done</button>
+          <button onClick={handleDoneButtonClick}>Done</button>
         )}
       </div>
       <textarea onChange={(e) => handleChange(e.target.value)} value={note?.body}></textarea>
