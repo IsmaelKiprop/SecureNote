@@ -121,4 +121,4 @@ def updateNote(request, pk):
 def deleteNote(request, pk):
     note = Note.objects.get(id=pk)
     note.delete()
-    return Response('Note was deleted!')
+    return Response('Note was deleted!') 
