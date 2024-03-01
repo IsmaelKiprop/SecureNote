@@ -73,6 +73,12 @@ def user_login(request):
     else:
         return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def logout(request):
+    # Delete the authentication token associated with the user
+    Token.objects.filter(user=request.user).delete()
+    return Response({'message': 'Successfully logged out'}, status=status.HTTP_200_OK)
 
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
