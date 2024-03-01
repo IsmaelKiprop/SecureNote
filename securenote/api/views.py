@@ -1,21 +1,15 @@
-from django.http import response
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.serializers import Serializer
-from .models import Note
-from .serializers import NoteSerializer
-from api import serializers
-from .utils import updateNote, getNoteDetail, deleteNote, getNotesList, createNote
 from rest_framework import status
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login as auth_login
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
-from django.contrib.auth import login as auth_login
+from .models import Note
+from .serializers import NoteSerializer
+from .utils import updateNote, getNoteDetail, deleteNote, getNotesList, createNote
 
-
-# Create your views here.
 
 @api_view(['GET'])
 def getRoutes(request):
@@ -53,6 +47,7 @@ def getRoutes(request):
     ]
     return Response(routes)
 
+
 @api_view(['POST'])
 def signup(request):
     username = request.data.get('username')
@@ -65,28 +60,31 @@ def signup(request):
     token, _ = Token.objects.get_or_create(user=user)
     return Response({'token': token.key}, status=status.HTTP_201_CREATED)
 
+
 @api_view(['POST'])
 def user_login(request):
     username = request.data.get('username')
     password = request.data.get('password')
     user = authenticate(request, username=username, password=password)
     if user is not None:
-        auth_login(request, user)  # Use auth_login instead of login to avoid conflict
+        auth_login(request, user)
         token, _ = Token.objects.get_or_create(user=user)
         return Response({'token': token.key})
     else:
         return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
+
 @api_view(['GET', 'POST'])
-@permission_classes([IsAuthenticated])  # Add permission class for authentication
+@permission_classes([IsAuthenticated])
 def getNotes(request):
     if request.method == 'GET':
         return getNotesList(request)
     if request.method == 'POST':
         return createNote(request)
 
+
 @api_view(['GET', 'PUT', 'DELETE'])
-@permission_classes([IsAuthenticated])  # Add permission class for authentication
+@permission_classes([IsAuthenticated])
 def getNote(request, pk):
     if request.method == 'GET':
         return getNoteDetail(request, pk)
@@ -95,8 +93,9 @@ def getNote(request, pk):
     if request.method == 'DELETE':
         return deleteNote(request, pk)
 
+
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])  # Add permission class for authentication
+@permission_classes([IsAuthenticated])
 def createNote(request):
     data = request.data
     if 'body' not in data:
@@ -105,8 +104,9 @@ def createNote(request):
     serializer = NoteSerializer(note)
     return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+
 @api_view(['PUT'])
-@permission_classes([IsAuthenticated])  # Add permission class for authentication
+@permission_classes([IsAuthenticated])
 def updateNote(request, pk):
     data = request.data
     note = Note.objects.get(id=pk)
@@ -115,8 +115,9 @@ def updateNote(request, pk):
         serializer.save()
     return Response(serializer.data)
 
+
 @api_view(['DELETE'])
-@permission_classes([IsAuthenticated])  # Add permission class for authentication
+@permission_classes([IsAuthenticated])
 def deleteNote(request, pk):
     note = Note.objects.get(id=pk)
     note.delete()
