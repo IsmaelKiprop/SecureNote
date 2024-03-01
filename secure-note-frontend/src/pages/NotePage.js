@@ -10,7 +10,7 @@ const NotePage = () => {
 
   useEffect(() => {
     fetchNote();
-  }, [fetchNote]); // Include fetchNote in the dependency array
+  }, []); // Empty dependency array
 
   const fetchNote = async () => {
     try {
