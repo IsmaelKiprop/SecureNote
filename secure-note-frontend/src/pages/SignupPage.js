@@ -1,11 +1,10 @@
-// SignupPage.js
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom'; // Import useHistory for redirection
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 import '../App.css'; // Import App.css for styling
 
 const SignupPage = () => {
-  const history = useHistory(); // Initialize useHistory hook
+  const navigate = useNavigate(); // Initialize useNavigate hook
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -18,7 +17,7 @@ const SignupPage = () => {
       });
       localStorage.setItem('token', response.data.token);
       // Redirect to login page upon successful signup
-      history.push('/login');
+      navigate('/login');
     } catch (error) {
       console.error('Error signing up:', error);
       setErrorMessage('Failed to sign up. Please try again.'); // Set error message if signup fails
