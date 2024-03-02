@@ -20,7 +20,9 @@ const LandingPage = () => {
                 <Link to="/login" className="btn">Login</Link>
                 <Link to="/signup" className="btn">Sign Up</Link>
             </div>
-            <img src="/path/to/your/image" alt="GuardianNote" className="landing-image" />
+            <footer className="footer">
+                <p>Copyright © {new Date().getFullYear()} GuardianNote. All rights reserved.</p>
+            </footer>
         </div>
     );
 }
