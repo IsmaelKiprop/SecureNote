@@ -1,28 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg';
-import { useParams } from 'react-router-dom'; // Removed useHistory import
+import { useParams } from 'react-router-dom';
 
 const NotePage = () => {
   const { pk } = useParams();
   const [note, setNote] = useState(null);
 
   useEffect(() => {
-    fetchNote();
-  }, []); // Empty dependency array
+    const fetchNote = async () => {
+      try {
+        const response = await axios.get(`/api/notes/${pk}/`, {
+          headers: {
+            Authorization: `Token ${localStorage.getItem('token')}`
+          }
+        });
+        setNote(response.data);
+      } catch (error) {
+        console.error('Error fetching note:', error);
+      }
+    };
 
-  const fetchNote = async () => {
-    try {
-      const response = await axios.get(`/api/notes/${pk}/`, {
-        headers: {
-          Authorization: `Token ${localStorage.getItem('token')}`
-        }
-      });
-      setNote(response.data);
-    } catch (error) {
-      console.error('Error fetching note:', error);
-    }
-  };
+    fetchNote(); // Fetch note when component mounts
+
+  }, [pk]); // Include pk in the dependency array
 
   const createNote = async () => {
     try {
@@ -31,7 +32,7 @@ const NotePage = () => {
           Authorization: `Token ${localStorage.getItem('token')}`
         }
       });
-      window.location.href = '/notes'; // Navigate to '/notes' page
+      window.location.href = '/notes';
     } catch (error) {
       console.error('Error creating note:', error);
     }
@@ -56,7 +57,7 @@ const NotePage = () => {
           Authorization: `Token ${localStorage.getItem('token')}`
         }
       });
-      window.location.href = '/notes'; // Navigate to '/notes' page
+      window.location.href = '/notes';
     } catch (error) {
       console.error('Error deleting note:', error);
     }
