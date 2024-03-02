@@ -77,13 +77,14 @@ TEMPLATES = [
 WSGI_APPLICATION = 'securenote.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'securenote',  # The name of your database
+        'USER': 'ismael',       # Your database username
+        'PASSWORD': 'ismael',   # Your database password
+        'HOST': 'localhost',    # The host where your database is running
+        'PORT': '3307',         # Specify the custom port here
     }
 }
 
