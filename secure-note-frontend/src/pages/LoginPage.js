@@ -7,25 +7,29 @@ const LoginPage = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('/api/login/', {
+      const response = await axios.post('http://your-backend-url/api/login/', {
         username,
         password
       });
-      localStorage.setItem('token', response.data.token);
-      // Additional login success logic if needed
+      const token = response.data.token;
+      // Store token in local storage or state for authentication
+      localStorage.setItem('token', token);
+      // Redirect to notes list page or any other desired destination
+      window.location.href = '/';
     } catch (error) {
-      console.error('Error logging in:', error);
+      console.error('Login failed:', error);
+      // Handle login error (display error message, clear input fields, etc.)
     }
   };
 
   return (
     <div>
       <h2>Login</h2>
-      <input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
-      <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+      <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+      <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
       <button onClick={handleLogin}>Login</button>
     </div>
   );
-};
+}
 
 export default LoginPage;
