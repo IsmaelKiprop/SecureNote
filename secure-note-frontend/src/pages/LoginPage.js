@@ -1,3 +1,4 @@
+// LoginPage.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../App.css'; // Importing App.css here
@@ -28,7 +29,7 @@ const LoginPage = () => {
       <h2>Login</h2>
       <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} className="input-field" /> {/* Apply class for input field styling */}
       <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} className="input-field" /> {/* Apply class for input field styling */}
-      <button onClick={handleLogin} className="login-button">Login</button> {/* Apply class for button styling */}
+      <button onClick={handleLogin} className="submit-button">Login</button> {/* Apply class for button styling */}
     </div>
   );
 }
