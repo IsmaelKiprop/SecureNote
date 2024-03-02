@@ -183,6 +183,56 @@ a {
   fill: var(--color-bg);
 }
 
+
+/* Landing page styles */
+.landing-page {
+    text-align: center;
+    padding: 20px;
+}
+
+.landing-page h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.landing-page p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.landing-page ul {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.landing-page ul li {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.landing-buttons {
+    margin-top: 20px;
+}
+
+.landing-buttons .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #800000; /* Maroon color */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.landing-buttons .btn:hover {
+    background-color: #6b0000; /* Darker shade of Maroon on hover */
+}
+
+.landing-image {
+    max-width: 100%;
+    margin-top: 50px;
+}
 /*==============================
 => Note Styles
 ================================*/
