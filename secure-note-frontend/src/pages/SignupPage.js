@@ -7,7 +7,7 @@ const SignupPage = () => {
 
   const handleSignup = async () => {
     try {
-      const response = await axios.post('http://your-django-backend/signup/', {
+      const response = await axios.post('/api/signup/', {
         username,
         password
       });
