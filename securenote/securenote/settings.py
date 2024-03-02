@@ -84,7 +84,7 @@ DATABASES = {
         'USER': 'ismael',       # Your database username
         'PASSWORD': 'ismael',   # Your database password
         'HOST': 'localhost',    # The host where your database is running
-        'PORT': '3307',         # Specify the custom port here
+        'PORT': '3306',         # Specify the custom port here
     }
 }
 
