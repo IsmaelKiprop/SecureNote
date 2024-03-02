@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom'; // Import Redirect from react-router-dom
 import '../App.css'; // Import App.css for styling
 
-const SignupPage = () => {
+const SignupPage = ({ history }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [signupSuccess, setSignupSuccess] = useState(false); // State to track signup success
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleSignup = async () => {
@@ -16,17 +14,13 @@ const SignupPage = () => {
         password
       });
       localStorage.setItem('token', response.data.token);
-      setSignupSuccess(true); // Set signup success to true
+      // Redirect to login page upon successful signup
+      history.push('/login');
     } catch (error) {
       console.error('Error signing up:', error);
       setErrorMessage('Failed to sign up. Please try again.'); // Set error message if signup fails
     }
   };
-
-  // Redirect to login page upon successful signup
-  if (signupSuccess) {
-    return <Redirect to="/login" />;
-  }
 
   return (
     <div className="signup-page"> {/* Apply class for page styling */}
