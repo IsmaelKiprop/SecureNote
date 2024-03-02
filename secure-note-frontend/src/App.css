@@ -1,5 +1,7 @@
+/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap');
 
+/* Define color variables */
 :root {
   --color-main: #800000; /* Maroon */
   --color-text: #383a3f;
@@ -13,6 +15,7 @@
   --color-maroon: maroon; /* Add the maroon color variable */
 }
 
+/* Define dark mode color variables */
 .dark {
   --color-main: #800000; /* Maroon */
   --color-text: #d6d1d1;
@@ -25,7 +28,7 @@
   --color-maroon: maroon; /* Add the maroon color variable */
 }
 
-/* BASE STYLES */
+/* Base styles */
 * {
   margin: 0;
   padding: 0;
@@ -46,7 +49,7 @@ a {
   text-decoration: none;
 }
 
-/* APP STYLES */
+/* App styles */
 .container {
   width: 100%;
   height: 100vh;
@@ -99,7 +102,7 @@ a {
   padding: 16px;
 }
 
-/* NOTES STYLES */
+/* Notes styles */
 .notes-header {
   display: flex;
   align-items: center;
@@ -199,36 +202,4 @@ a {
 }
 
 .note-header h3 svg {
-  fill: var(--color-main);
-  width: 20px;
-  margin-right: 8px;
-}
-
-.note-header button {
-  border: none;
-  outline: none;
-  font-weight: 600;
-  background-color: transparent;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-.note textarea {
-  background-color: var(--color-white);
-  border: none;
-  padding: 16px 12px;
-  width: 100%;
-  height: 70vh;
-  resize: none;
-  scrollbar-width: none; /* Firefox */
-}
-
-.note textarea:active,
-.note textarea:focus {
-  outline: none;
-  border: none;
-}
-
-.note textarea::-webkit-scrollbar {
-  display: none;
-}
+  fill: var(--color-main
