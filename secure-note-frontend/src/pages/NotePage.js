@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const NotePage = () => {
   const { pk } = useParams();
   const [note, setNote] = useState(null);
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
   useEffect(() => {
     const fetchNote = async () => {
@@ -32,7 +33,7 @@ const NotePage = () => {
           Authorization: `Token ${localStorage.getItem('token')}`
         }
       });
-      window.location.href = '/notes';
+      navigate('/notes'); // Use navigate to redirect to '/notes'
     } catch (error) {
       console.error('Error creating note:', error);
     }
@@ -57,7 +58,7 @@ const NotePage = () => {
           Authorization: `Token ${localStorage.getItem('token')}`
         }
       });
-      window.location.href = '/notes';
+      navigate('/notes'); // Use navigate to redirect to '/notes'
     } catch (error) {
       console.error('Error deleting note:', error);
     }
