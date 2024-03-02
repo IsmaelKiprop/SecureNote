@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom'; // Removed useHistory import
 
 const NotePage = () => {
   const { pk } = useParams();
   const [note, setNote] = useState(null);
-  const history = useHistory();
 
   useEffect(() => {
     fetchNote();
@@ -32,7 +31,7 @@ const NotePage = () => {
           Authorization: `Token ${localStorage.getItem('token')}`
         }
       });
-      history.push('/notes');
+      window.location.href = '/notes'; // Navigate to '/notes' page
     } catch (error) {
       console.error('Error creating note:', error);
     }
@@ -57,7 +56,7 @@ const NotePage = () => {
           Authorization: `Token ${localStorage.getItem('token')}`
         }
       });
-      history.push('/notes');
+      window.location.href = '/notes'; // Navigate to '/notes' page
     } catch (error) {
       console.error('Error deleting note:', error);
     }
