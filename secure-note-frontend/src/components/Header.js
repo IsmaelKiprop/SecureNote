@@ -1,23 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './App.css';
 
 const Header = () => {
   const handleLogout = () => {
-    // Perform logout logic here (e.g., clear authentication token or session)
-    // Example:
     localStorage.removeItem('token'); // Remove authentication token from local storage
-    // Redirect to the login page or any other desired destination
     window.location.href = '/login'; // Redirect to the login page after logout
   };
 
   return (
-    <header>
+    <header className="app-header">
+      <h1 className="app-title">GuardianNote</h1> {/* Application name */}
       <nav>
         <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/signup">Sign Up</Link></li>
-          <li><Link to="/login">Login</Link></li>
-          <li><button onClick={handleLogout}>Logout</button></li> {/* Logout button */}
+          <li><Link to="/" className="nav-link">Home</Link></li>
+          <li><Link to="/signup" className="nav-link">Sign Up</Link></li>
+          <li><Link to="/login" className="nav-link">Login</Link></li>
+          <li><button onClick={handleLogout} className="logout-button">Logout</button></li>
         </ul>
       </nav>
     </header>
