@@ -141,3 +141,6 @@ REST_FRAMEWORK = {
     ],
     # other settings
 }
+
+# Define your custom user model
+AUTH_USER_MODEL = 'api.CustomUser'
