@@ -33,56 +33,59 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Lexend', sans-serif;
-  color: inherit;
-  font-size: inherit;
-  scroll-behavior: smooth;
 }
 
 body {
-  line-height: 1.8em;
+  font-family: 'Lexend', sans-serif;
   font-weight: 400;
   font-size: 16px;
+  line-height: 1.8em;
+  color: var(--color-text);
+  scroll-behavior: smooth;
 }
 
 a {
+  color: inherit;
   text-decoration: none;
 }
 
-/* App styles */
+/* Container */
 .container {
   width: 100%;
-  height: 100vh;
-  color: var(--color-text);
+  min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  background-color: var(--color-maroon);
+  justify-content: center;
+  background-color: var(--color-bg);
 }
 
+/* App */
 .app {
   width: 100%;
   max-width: 480px;
   height: 88vh;
-  margin: 0 auto;
   background-color: var(--color-white);
   box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.05);
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Header */
 .app-header {
-  display: flex;
-  align-items: center;
-  padding: 16px;
-  justify-content: space-between;
+  padding: 20px;
   background-color: var(--color-lighter);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .app-header h1 {
   font-size: 30px;
   color: var(--color-dark);
   font-weight: 800;
-  text-align: center;
 }
 
 .app-header button {
@@ -98,46 +101,21 @@ a {
   object-fit: cover;
 }
 
+/* Body */
 .app-body {
-  padding: 16px;
+  padding: 20px;
+  flex: 1;
+  overflow-y: auto;
 }
 
-/* Header styles */
-.app-header {
-  background-color: #f3f6f9; /* Light background color */
-  padding: 20px; /* Add padding for spacing */
+/* Button */
+.button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.app-title {
-  margin: 0; /* Remove default margin */
-  font-size: 24px; /* Increase font size */
-  font-weight: bold; /* Add bold font weight */
-}
-
-.nav-link {
-  margin-right: 20px; /* Add margin between navigation links */
-  color: #800000; /* Maroon color */
-  text-decoration: none; /* Remove default underline */
-}
-
-.nav-link:hover {
-  text-decoration: underline; /* Underline on hover */
-  cursor: pointer; /* Change cursor to pointer on hover */
-}
-
-.logout-button {
-  background-color: #800000; /* Maroon color */
-  color: #fff; /* White text color */
-  border: none; /* Remove border */
-  padding: 10px 20px; /* Add padding */
-  border-radius: 5px; /* Add border radius */
-  cursor: pointer; /* Change cursor to pointer */
-}
-
-.logout-button:hover {
-  background-color: #6b0000; /* Darker shade of Maroon on hover */
-}
-/* Notes styles */
+/* Notes */
 .notes-header {
   display: flex;
   align-items: center;
@@ -147,7 +125,6 @@ a {
 
 .notes-title,
 .notes-count {
-  color: var(--color-main);
   font-size: 24px;
   font-weight: 600;
 }
@@ -162,7 +139,6 @@ a {
   margin: 16px 0;
   height: 70vh;
   overflow-y: auto;
-  scrollbar-width: none; /* Firefox */
 }
 
 .notes-list::-webkit-scrollbar {
@@ -197,9 +173,9 @@ a {
   color: var(--color-light);
 }
 
+/* Floating Button */
 .floating-button {
-  font-size: 48px;
-  position: absolute;
+  position: fixed;
   bottom: 24px;
   right: 16px;
   background: var(--color-main);
@@ -212,15 +188,15 @@ a {
   justify-content: center;
   cursor: pointer;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
 }
 
 .floating-button > svg {
   fill: var(--color-bg);
 }
 
-/* signup page styles */
-
-.signup-page {
+/* Form */
+.form-container {
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
@@ -238,109 +214,18 @@ a {
   border-radius: 4px;
 }
 
-.signup-button {
+.submit-button {
   width: 100%;
   padding: 10px;
   font-size: 16px;
   color: #fff;
-  background-color: #800000;
+  background-color: var(--color-main);
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.signup-button:hover {
-  background-color: #0056b3;
-}
-
-.error-message {
-  color: #ff0000;
-  margin-bottom: 10px;
-}
-
-
-/* Landing page styles */
-.landing-page {
-    text-align: center;
-    padding: 20px;
-    background-color: transparent; /* Set background to transparent */
-}
-
-.landing-page h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
-.landing-page p {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-}
-
-.landing-page ul {
-    text-align: left;
-    margin-bottom: 20px;
-}
-
-.landing-page ul li {
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-}
-
-.landing-buttons {
-    margin-top: 20px;
-}
-
-.landing-buttons .btn {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 0 10px;
-    background-color: #800000; /* Maroon color */
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.landing-buttons .btn:hover {
-    background-color: #6b0000; /* Darker shade of Maroon on hover */
-}
-
-.landing-image {
-    max-width: 100%;
-    margin-top: 50px;
-}
-
-/* Login page styles */
-.login-page {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff;
-}
-
-.input-field {
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 8px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.login-button {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #800000;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.login-button:hover {
+.submit-button:hover {
   background-color: #6b0000;
 }
 
