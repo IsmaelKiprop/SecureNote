@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'securenote.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'securenote',  # The name of your database
+        'NAME': 'sucurenote',  # The name of your database
         'USER': 'ismael',       # Your database username
         'PASSWORD': 'ismael',   # Your database password
         'HOST': 'localhost',    # The host where your database is running
