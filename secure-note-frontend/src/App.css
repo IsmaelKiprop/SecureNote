@@ -221,10 +221,13 @@ a {
   color: #ff0000;
   margin-bottom: 10px;
 }
+
+
 /* Landing page styles */
 .landing-page {
     text-align: center;
     padding: 20px;
+    background-color: transparent; /* Set background to transparent */
 }
 
 .landing-page h1 {
