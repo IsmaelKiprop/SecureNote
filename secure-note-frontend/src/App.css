@@ -102,6 +102,41 @@ a {
   padding: 16px;
 }
 
+/* Header styles */
+.app-header {
+  background-color: #f3f6f9; /* Light background color */
+  padding: 20px; /* Add padding for spacing */
+}
+
+.app-title {
+  margin: 0; /* Remove default margin */
+  font-size: 24px; /* Increase font size */
+  font-weight: bold; /* Add bold font weight */
+}
+
+.nav-link {
+  margin-right: 20px; /* Add margin between navigation links */
+  color: #800000; /* Maroon color */
+  text-decoration: none; /* Remove default underline */
+}
+
+.nav-link:hover {
+  text-decoration: underline; /* Underline on hover */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.logout-button {
+  background-color: #800000; /* Maroon color */
+  color: #fff; /* White text color */
+  border: none; /* Remove border */
+  padding: 10px 20px; /* Add padding */
+  border-radius: 5px; /* Add border radius */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+.logout-button:hover {
+  background-color: #6b0000; /* Darker shade of Maroon on hover */
+}
 /* Notes styles */
 .notes-header {
   display: flex;
@@ -183,6 +218,7 @@ a {
   fill: var(--color-bg);
 }
 
+/* signup page styles */
 
 .signup-page {
   max-width: 400px;
