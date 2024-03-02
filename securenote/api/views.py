@@ -100,17 +100,19 @@ def getNote(request, pk):
     if request.method == 'DELETE':
         return deleteNote(request, pk)
 
-
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def createNote(request):
     data = request.data
     if 'body' not in data:
         return Response({'detail': 'Missing "body" in request data'}, status=status.HTTP_400_BAD_REQUEST)
-    note = Note.objects.create(body=data['body'])
+    
+    # Associate the note with the authenticated user
+    data['user'] = request.user.pk  # Assuming `request.user` represents the authenticated user
+    
+    note = Note.objects.create(**data)
     serializer = NoteSerializer(note)
     return Response(serializer.data, status=status.HTTP_201_CREATED)
-
 
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
@@ -121,7 +123,6 @@ def updateNote(request, pk):
     if serializer.is_valid():
         serializer.save()
     return Response(serializer.data)
-
 
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
