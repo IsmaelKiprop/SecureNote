@@ -1,8 +1,11 @@
+// SignupPage.js
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom'; // Import useHistory for redirection
 import '../App.css'; // Import App.css for styling
 
-const SignupPage = ({ history }) => {
+const SignupPage = () => {
+  const history = useHistory(); // Initialize useHistory hook
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -28,7 +31,7 @@ const SignupPage = ({ history }) => {
       {errorMessage && <p className="error-message">{errorMessage}</p>} {/* Display error message if exists */}
       <input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} className="input-field" /> {/* Apply class for input field styling */}
       <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} className="input-field" /> {/* Apply class for input field styling */}
-      <button onClick={handleSignup} className="signup-button">Sign Up</button> {/* Apply class for button styling */}
+      <button onClick={handleSignup} className="submit-button">Sign Up</button> {/* Apply class for button styling */}
     </div>
   );
 };
