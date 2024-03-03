@@ -1,4 +1,4 @@
-/*Headers.js*/
+// Headers.js
 
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -15,8 +15,6 @@ const Header = () => {
 
   return (
     <header className="app-header">
-      <img src={logo} alt="Logo" className="app-logo" /> {/* Local logo image */}
-      
       <nav>
         <ul>
           <li><Link to="/" className="nav-link">Home</Link></li>
@@ -27,4 +25,4 @@ const Header = () => {
   );
 }
 
-export default Header
+export default Header;
