@@ -104,9 +104,11 @@ a {
   color: var(--color-main);
 }
 
-/* Add styles for landing logo */
+/* App.css */
+/* Adjust the logo size to fit well on all screens */
 .landing-logo {
-  width: 100px; /* Adjust the width as needed */
+  width: 20%; /* Adjust percentage value as needed */
+  max-width: 200px; /* Set a maximum width if necessary */
   height: auto; /* Maintain aspect ratio */
   margin-bottom: 20px;
 }
