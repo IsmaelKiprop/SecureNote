@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import '../App.css'; // Import App.css for styling
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
@@ -31,7 +32,7 @@ const LoginPage = () => {
       {errorMessage && <p className="error-message">{errorMessage}</p>} {/* Display error message if login fails */}
       <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} className="input-field" />
       <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} className="input-field" />
-      <button onClick={handleLogin} className="login-button">Login</button>
+      <button onClick={handleLogin} className="submit-button">Login</button>
     </div>
   );
 };
