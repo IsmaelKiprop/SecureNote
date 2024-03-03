@@ -190,3 +190,10 @@ a {
   font-size: 16px;
   color: var(--color-text);
 }
+
+/* Footer */
+.footer {
+  margin-top: 40px; /* Added margin to separate from landing content */
+  text-align: center;
+  color: var(--color-gray);
+}
