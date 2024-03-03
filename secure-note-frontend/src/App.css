@@ -104,10 +104,12 @@ a {
   color: var(--color-main);
 }
 
-/* Adjust the logo size to be big and fit well */
+
+/* Adjust the logo size to be enlarged and fit the screen with height */
 .landing-logo {
-  width: 200px; /* Adjust pixel size as needed */
-  height: auto; /* Maintain aspect ratio */
+  width: 100%;
+  height: auto;
+  max-height: 80vh; /* Set a maximum height if necessary */
   margin-bottom: 20px;
 }
 
