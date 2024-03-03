@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <header className="app-header">
       <img src={logo} alt="Logo" className="app-logo" /> {/* Local logo image */}
-      <h1 className="app-title" style={{ color: '#800000' }}>GuardianNote</h1> {/* Application name with maroon color */}
+      
       <nav>
         <ul>
           <li><Link to="/" className="nav-link">Home</Link></li>
