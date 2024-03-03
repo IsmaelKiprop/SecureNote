@@ -3,7 +3,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css'; // Importing App.css here
-import logo from '../assets/logo.png'; // Importing the local logo image
 
 const Header = () => {
   const isAuthenticated = localStorage.getItem('token'); // Check if the user is authenticated
