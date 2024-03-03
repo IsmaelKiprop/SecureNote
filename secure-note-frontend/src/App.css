@@ -104,6 +104,13 @@ a {
   color: var(--color-main);
 }
 
+/* Add styles for landing logo */
+.landing-logo {
+  width: 100px; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 20px;
+}
+
 .landing-page p {
   margin-bottom: 40px;
   font-size: 18px;
