@@ -73,7 +73,7 @@ GuardianNote is a secure note-taking application that prioritizes the protection
 ## Backend
 1. **Navigate to the backend directory:**
 	```bash
-	cd backend
+	cd securenote
 
 2. **Install Django dependencies:**
 	```bash
