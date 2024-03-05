@@ -1,6 +1,5 @@
 {
   "name": "secure-note-frontend",
-  "proxy": "http://127.0.0.1:8000",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -17,7 +16,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start --port 3000",
+    "start": "react-scripts start --port 3000 --host localhost",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
