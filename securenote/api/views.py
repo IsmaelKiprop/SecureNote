@@ -1,4 +1,3 @@
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from .models import CustomUser
 from django.shortcuts import render
 from rest_framework.response import Response
